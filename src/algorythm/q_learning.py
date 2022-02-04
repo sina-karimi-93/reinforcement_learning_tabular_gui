@@ -279,29 +279,3 @@ class QLearning:
                 "value_state": self.value_state,
                 "Q": self.Q,
                 "total_reward": self.parameters.total_reward}
-
-
-# if __name__ == "__main__":
-#     os.system("cls")
-#     q_learning = QLearning(parameters=Parameters)
-#     q_learning.train()
-#     q_learning.test()
-
-#     p, v, q, total_reward = q_learning.get_results()
-#     print(f"Total Reward -> {total_reward}")
-#     print("================= Value State ===============")
-#     print(v[0:5])
-#     print(v[5:10])
-#     print(v[10:15])
-#     print(v[15:20])
-#     print(v[20:25])
-
-#     print()
-#     print("================= Policy ===============")
-#     print(p[0:5])
-#     print(p[5:10])
-#     print(p[10:15])
-#     print(p[15:20])
-#     print(p[20:25])
-#     # print("================= Q ===============")
-#     # print(q)
