@@ -132,7 +132,6 @@ class QLearning:
         """
         is_reached = self.parameters.model[x_state,
                                            y_state] != self.parameters.model[self.parameters.x_goal-1, self.parameters.y_goal-1]
-
         return is_reached
 
     def reduce_exploration(self, episode) -> float:
@@ -206,7 +205,6 @@ class QLearning:
 
             # Check if agent reached the goal or 1000 times tries to reach the goal
             while self.is_reached_the_goal(x_state, y_state) and try_per_episode < 1000:
-
                 try_per_episode += 1
 
                 current_state = new_state

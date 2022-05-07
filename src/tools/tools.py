@@ -43,16 +43,21 @@ class BiggerThanOneDescriptor:
     A Descriptor class for preventing a class parameter get value lower than 1
     """
 
-    def __init__(self, number: int = 0):
-        self.number = number
+    def __init__(self):
+        self.name = None
 
-    def __get__(self, obj, objtype=None):
-        return self.number
+    def __set_name__(self, instance, name):
+        self.name = name
 
-    def __set__(self, obj, value):
+    def __set__(self, instance: object, value: float):
         if value < 1:
             value = 1
-        self.number = value
+        instance.__dict__[self.name] = value
+
+    def __get__(self, instance: object, owner: type) -> float:
+        if instance is None:
+            return self
+        return instance.__dict__[self.name]
 
 
 class BetweenOneAndZero:
@@ -61,15 +66,20 @@ class BetweenOneAndZero:
     and lower than zero
     """
 
-    def __init__(self, number: int = 0):
-        self.number = number
+    def __init__(self):
+        self.name = None
 
-    def __get__(self, obj, objtype=None):
-        return self.number
+    def __set_name__(self, instance: object, name: str) -> None:
+        self.name = name
 
-    def __set__(self, obj, value):
+    def __set__(self, instance: object, value: float):
         if value > 1:
             value = 1
         elif value < 0:
             value = 0
-        self.number = value
+        instance.__dict__[self.name] = value
+
+    def __get__(self, instance: object, owner: type) -> float:
+        if instance is None:
+            return self
+        return instance.__dict__[self.name]
